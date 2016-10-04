@@ -2851,14 +2851,19 @@ cefParseExtensions(const char *const __restrict__ str,
 			++i;
 		iName = i;
 		CHKR(cefParseName(str, strLen, &i));
-		if(i+1 >= strLen || str[i] != '=')
+		if(str[i] != '=')
 			FAIL(LN_WRONGPARSER);
 		lenName = i - iName;
 		++i; /* skip '=' */
 
 		iValue = i;
+                if(i >= strLen) {
+			// In case there is an empty field at the end
+			lenValue = 0;
+		} else {
 		CHKR(cefParseExtensionValue(str, strLen, &i));
 		lenValue = i - iValue;
+		}
 
 		++i; /* skip past value */
 
