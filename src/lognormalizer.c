@@ -167,7 +167,7 @@ void
 normalize(void)
 {
 	FILE *fp = stdin;
-	char buf[10*1024];
+	char buf[40*1024];
 	struct json_object *json = NULL;
 	long long unsigned numParsed = 0;
 	long long unsigned numUnparsed = 0;
