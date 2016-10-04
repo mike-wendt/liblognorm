@@ -2817,7 +2817,7 @@ cefParseName(const char *const __restrict__ str,
 {
 	int r = 0;
 	while(*i < strLen && str[*i] != '=') {
-		if(!(isalnum(str[*i]) || str[*i] == '_' || str[*i] == '.'))
+		if(!(isalnum(str[*i]) || str[*i] == '_' || str[*i] == '.' || str[*i] == ',' || str[*i] == '~' || str[*i] == ':' || str[*i] == '(' || str[*i] == ')' || str[*i] == '[' || str[*i] == ']' || str[*i] == '-' || str[*i] == '+') || str[*i] == '\'')
 			FAIL(LN_WRONGPARSER);
 		++(*i);
 	}
