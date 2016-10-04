@@ -2771,7 +2771,8 @@ cefParseExtensionValue(const char *const __restrict__ str,
 			if(str[i] != '=' &&
 			   str[i] != '\\' &&
 			   str[i] != 'r' &&
-			   str[i] != 'n')
+			   str[i] != 'n' &&
+			   str[i] != '/')
 			FAIL(LN_WRONGPARSER);
 			inEscape = 0;
 		} else {
@@ -2922,7 +2923,7 @@ cefGetHdrField(const char *const __restrict__ str,
 	while(i < strLen && str[i] != '|') {
 		if(str[i] == '\\') {
 			++i; /* skip esc char */
-			if(str[i] != '\\' && str[i] != '|')
+			if(str[i] != '\\' && str[i] != '|' && str[i] != '/')
 				FAIL(LN_WRONGPARSER);
 		}
 		++i; /* scan to next delimiter */
